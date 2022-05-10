@@ -1,0 +1,32 @@
+server:
+  port: 8800
+  servlet:
+    context-path: /log
+spring:
+  application:
+    name: kbplus-demo-log
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        group: DEFAULT_GROUP
+        namespace: kbplus
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  rabbitmq:
+    host: 192.168.12.191
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        acknowledge-mode: manual    #acknowledgeMode设置为手动模式(NONE,MANUAL,AUTO)
+        default-requeue-rejected: true  #消息消费失败后，重新进入消费队列中
+      direct:
+        acknowledge-mode: manual    #acknowledgeMode设置为手动模式
+
+elasticsearch:
+  host: 192.168.12.191
+  port: 9200
